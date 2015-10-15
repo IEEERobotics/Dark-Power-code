@@ -14,5 +14,18 @@
 
 #endif /* ADC_H_ */
 
+
+/*********************extern variables used *********************************/
+
+extern volatile unsigned char v_in_is_less_than_twelve_volts ;
+
+
+/*********************extern variables used *********************************/
+
+
+/*********************function declarations *********************************/
 void init_adc(void);
 void start_adc(void);
+
+__interrupt void ADC10_ISR(void);
+/*********************function declarations *********************************/

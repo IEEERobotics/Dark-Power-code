@@ -1,1 +1,1 @@
-"./ADC.obj" "./clocks.obj" "./main.obj" "./ports.obj" "../lnk_msp430f2012.cmd" -l"libc.a" 
+"./ADC.obj" "./clocks.obj" "./main.obj" "./ports.obj" "./timers.obj" "../lnk_msp430f2012.cmd" -l"libc.a" 

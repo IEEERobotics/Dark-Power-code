@@ -10,22 +10,35 @@
 
 /*******************************************************************/
 
-#define Twelve_volts_Minimum_hex_adc_value (0x2FF)
 
 void check_vin_rail(void);
 void power_down_voltage_rails(void);
-volatile unsigned int v_in = 0;
+volatile unsigned char v_in_is_less_than_twelve_volts = FALSE;
 
 
 
 /******************************************************************/
 
+
+
+/*
+ * This function serves as an enternal low-power mode setter unless the adc finds something wrong with the
+ * 		input voltage on on the VCC (v_in) rail.  If the rail drops to less than 12V reccommended minimum
+ * 		range for the battery input, it cuts off the power to the supply rails.
+ *
+ *
+ */
 int main(void) {
     int delay;
     init_ports();
     init_clocks();
-    init_adc();
+
     init_timers();
+
+    init_adc();
+
+    start_adc ();
+
     for(delay = 0; delay < 1000; delay++);
     P1OUT |= 0x02;
     _enable_interrupts();
@@ -34,28 +47,27 @@ int main(void) {
     while(1) {
 
 
-        /*
-        if ( v_in < Twelve_volts_Minimum_hex_adc_value ) {
+
+
+        if ( v_in_is_less_than_twelve_volts == TRUE ) {
              power_down_voltage_rails();
              continue;
 		 }
 		 else
-		 __bis_SR_register(CPUOFF + GIE);
-         */
+				_low_power_mode_3();
+
+
+
     }
-//    return 0;
+    //return 0;
 }
 
-#pragma vector=ADC10_VECTOR
-__interrupt void ADC10_ISR(void)  {
-      __bis_SR_register_on_exit(CPUOFF + GIE);
-     ADC10CTL0 &= ~ENC;         //disable ADC conversion unit
-     v_in = ADC10MEM;             //get conversion data from the adc mem register.
-     ADC10CTL0 |= ENC | ADC10SC;    //re-enable conversions AND set start conversion bit
 
-
-}
 
 void power_down_voltage_rails () {
     //set gpio pins that control the fets to low;
+	P2OUT &=  ~ 	POWER_EN;		// turn off power.
+	P2OUT |= 		BUZZ	; 		// ENABLE THE BUZZER
+	P1OUT |=		RGB_RED ; 		// turn on warning red led
+
 }

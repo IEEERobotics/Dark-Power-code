@@ -19,7 +19,7 @@ void init_port1(void){
 	P1DIR = 	CLEAR;									// Set all pins to input direction
 	P1DIR |= 	(RGB_RED | RGB_GREEN | RGB_BLUE);		// Set to output direction for rgb leds
 	P1SEL = 	CLEAR;									// Set all pins to GPIO
-	P1OUT = 	CLEAR;									// Set all pins to Low power mode
+	P1OUT = 	CLEAR;									// Set all pins to Low
 
 }
 

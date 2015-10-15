@@ -28,3 +28,11 @@
 
 
 #define FIVE_MS_INTERVAL_FOR_CC0 (25000)  /* 5 ms timer.   100,000 / 4  = 25000 / 25000 (define) = 1 Hz. */
+
+
+
+/*  voltage macros     */
+
+#define Twelve_volts_Minimum_hex_adc_value (0x262)
+#define TRUE	(0x1)
+#define FALSE   (0X0)
