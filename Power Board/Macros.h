@@ -15,8 +15,8 @@
 #endif /* MACROS_H_ */
 
 #define CLEAR 		0x00
-#define RGB_RED 	0x04
-#define RGB_GREEN	0x02
+#define RGB_RED 	0x02
+#define RGB_GREEN	0x04
 #define RGB_BLUE	0x01
 #define VIN_REF		0x08
 #define BUZZ		0x40
@@ -33,6 +33,9 @@
 
 /*  voltage macros     */
 
-#define Twelve_volts_Minimum_hex_adc_value (0x262)
+#define Twelve_volts_Minimum_hex_adc_value (0x197)
 #define TRUE	(0x1)
 #define FALSE   (0X0)
+
+
+#define TA0CCR0_INTERVAL_5   (2500)

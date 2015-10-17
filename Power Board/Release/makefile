@@ -2,9 +2,7 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-SHELL = cmd.exe
-
-CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5
+CG_TOOL_ROOT := /home/ecoprt/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -21,8 +19,8 @@ $(GEN_CMDS__FLAG) \
 
 -include ../makefile.init
 
-RM := DEL /F
-RMDIR := RMDIR /S/Q
+RM := rm -rf
+RMDIR := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -140,13 +138,13 @@ all: Power\ Board.out
 Power\ Board.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi -O2 --use_hw_mpy=none --advice:power=all --define=__MSP430F2012__ --diag_warning=225 --diag_wrap=off --display_error_number --printf_support=minimal -z -m"Power Board.map" --heap_size=0 --stack_size=50 -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --reread_libs --warn_sections --diag_wrap=off --display_error_number --xml_link_info="Power Board_linkInfo.xml" --use_hw_mpy=none --rom_model -o "Power Board.out" $(ORDERED_OBJS)
+	"/home/ecoprt/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/cl430" -vmsp --abi=eabi -O2 --use_hw_mpy=none --advice:power=all --define=__MSP430F2012__ --diag_warning=225 --display_error_number --diag_wrap=off --printf_support=minimal -z -m"Power Board.map" --heap_size=0 --stack_size=50 -i"/home/ecoprt/ti/ccsv6/ccs_base/msp430/include" -i"/home/ecoprt/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/lib" -i"/home/ecoprt/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="Power Board_linkInfo.xml" --use_hw_mpy=none --rom_model -o "Power Board.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 Power\ Board.hex: $(EXE_OUTPUTS)
 	@echo 'Invoking: MSP430 Hex Utility'
-	"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/hex430" --memwidth=8 --romwidth=8 -o "Power Board.hex" $(EXE_OUTPUTS__QUOTED)
+	"/home/ecoprt/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.5/bin/hex430" --memwidth=8 --romwidth=8 -o "Power Board.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $@'
 	@echo ' '
 
