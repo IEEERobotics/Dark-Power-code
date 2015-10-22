@@ -32,11 +32,12 @@ int main(void) {
 	init_clocks();
 	init_timers();
 
+
 	for (delay = 0; delay < 1000; delay++)
 		;
 	P1OUT |= RGB_GREEN;
 	_enable_interrupts();
-
+	P2OUT &= 	~POWER_EN;
 	while (1) {
 
 		if (secondFlag == TRUE) {
@@ -50,7 +51,9 @@ int main(void) {
 			continue;
 		} else
 			//_low_power_mode_3();
-			continue;
+		{
+			P2OUT &= ~POWER_EN;
+		}
 
 	}
 }
@@ -64,7 +67,7 @@ void ADC_Process(void) {
 
 void power_down_voltage_rails() {
 	//set gpio pins that control the fets to low;
-	P2OUT &= ~POWER_EN;		// turn off power.
+	P2OUT |= POWER_EN;		// turn off power.
 	P2OUT |= BUZZ; 		// ENABLE THE BUZZER
 	P1OUT &= ~RGB_GREEN; 		// turn OFF green led
 	P1OUT |= RGB_RED; 		// turn on warning red led

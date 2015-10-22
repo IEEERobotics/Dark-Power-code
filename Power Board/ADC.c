@@ -29,5 +29,8 @@ __interrupt void ADC10_ISR(void) {
 		v_in_is_less_than_twelve_volts = TRUE;
 		//_low_power_mode_off_on_exit();
 	}
-
-}
+	else
+	{
+		v_in_is_less_than_twelve_volts = FALSE;
+	}
+	}
