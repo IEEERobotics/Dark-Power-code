@@ -52,6 +52,8 @@ int main(void) {
 		} else
 			//_low_power_mode_3();
 		{
+			P1OUT |= RGB_GREEN;
+			P1OUT &= ~RGB_RED; 		// turn OFF green led
 			P2OUT &= ~POWER_EN;
 		}
 
